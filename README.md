@@ -28,7 +28,7 @@
 | category_id     | integer    | null: false                    |
 | condition_id    | integer    | null: false                    |
 | delivery_fee_id | integer    | null: false                    |
-| comes_from_id   | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | days_taken_id   | integer    | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
@@ -46,7 +46,7 @@
 -------end--------
 
 
-## purchases テーブル
+## orders テーブル
 
 | Column     | Type       | Options                        |
 | :--------- | :--------- | :----------------------------- |
@@ -60,19 +60,22 @@
 -has_one :address
 
 
-## addresses テーブル
+## shipping_addresses テーブル
 
-| Column       | Type       | Options                        |
-| :------------| :--------- | :----------------------------- |
-| postal_code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| areas        | string     | null: false                    |
-| block_number | integer    | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
-| purchase     | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| :-------------| :--------- | :----------------------------- |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| areas         | string     | null: false                    |
+| block_number  | integer    | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
 -belongs_to :purchases
+---activeHash---
+belongs_to :prefecture
+------end-------
 
