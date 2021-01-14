@@ -74,7 +74,7 @@
 
 ### Association
 
--belongs_to :purchases
+-belongs_to :purchase
 ---activeHash---
 belongs_to :prefecture
 ------end-------
