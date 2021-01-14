@@ -1,24 +1,37 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## orders テーブル
 
-* System dependencies
+| Column     | Type       | Options                        |
+| :--------- | :--------- | :----------------------------- |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
 
-* Database creation
+-belongs_to :user
+-belongs_to :item
+-has_one :address
 
-* Database initialization
 
-* How to run the test suite
+## shipping_addresses テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column        | Type       | Options                        |
+| :-------------| :--------- | :----------------------------- |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| areas         | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
 
-* ...
+-belongs_to :purchase
+---activeHash---
+belongs_to :prefecture
+------end-------
+
+
