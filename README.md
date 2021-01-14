@@ -79,3 +79,4 @@
 belongs_to :prefecture
 ------end-------
 
+a
