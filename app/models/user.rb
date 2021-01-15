@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   
-  validates_format_of :email, with: VALID_EMAIL_REGEX
+  validates_format_of :email, with: VALID_EMAIL_REGEX, message: 'には「@」を含めてください'
   validates_format_of :password, with: VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください!'
   validates_format_of :last_name_kanji, with: VALID_KANJI_REGEX, message: 'には全角文字を使用してください'
   validates_format_of :first_name_kanji, with: VALID_KANJI_REGEX, message: 'には全角文字を使用してください'
