@@ -5,11 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   VALID_EMAIL_REGEX = /@.+/
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   VALID_KANJI_REGEX = /\A[一-龥々]+\z/
   VALID_KATAKANA_REGEX = /\A[ァ-ヶ]+\z/
-  
-  
+
   validates :nickname, presence: true
   validates_format_of :email, with: VALID_EMAIL_REGEX
   validates_format_of :password, with: VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください!'
@@ -18,9 +17,4 @@ class User < ApplicationRecord
   validates_format_of :last_name_kana, presence: true, with: VALID_KATAKANA_REGEX, message: 'には全角カタカナを使用してください'
   validates_format_of :first_name_kana, presence: true, with: VALID_KATAKANA_REGEX, message: 'には全角カタカナを使用してください'
   validates :date_of_birth, presence: true
-
-
 end
-
-
-
