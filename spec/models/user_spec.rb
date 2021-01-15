@@ -81,25 +81,25 @@ RSpec.describe User, type: :model do
       it 'last_name_kanjiが空では登録できない' do
         @user.last_name_kanji = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('Last name kanji には全角漢字を使用してください')
+        expect(@user.errors.full_messages).to include('Last name kanji には全角文字を使用してください')
       end
 
-      it 'last_name_kanjiが漢字以外では登録できない' do
-        @user.last_name_kanji = 'やまだ'
+      it 'last_name_kanjiが漢字・ひらがな・カタカナ以外では登録できない' do
+        @user.last_name_kanji = '123'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Last name kanji には全角漢字を使用してください')
+        expect(@user.errors.full_messages).to include('Last name kanji には全角文字を使用してください')
       end
 
       it 'first_name_kanjiが空では登録できない' do
         @user.first_name_kanji = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kanji には全角漢字を使用してください')
+        expect(@user.errors.full_messages).to include('First name kanji には全角文字を使用してください')
       end
 
-      it 'first_name_kanjiが漢字以外では登録できない' do
-        @user.first_name_kanji = 'たろう'
+      it 'first_name_kanjiが漢字・ひらがな・カタカナ以外では登録できない' do
+        @user.first_name_kanji = '123'
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kanji には全角漢字を使用してください')
+        expect(@user.errors.full_messages).to include('First name kanji には全角文字を使用してください')
       end
 
       it 'last_name_kanaが空では登録できない' do
