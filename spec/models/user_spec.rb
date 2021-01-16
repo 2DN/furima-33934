@@ -25,10 +25,10 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
 
-      it "emailに「@」が含まれていないと登録できない" do
-        @user.email = "samplesample.com"
+      it 'emailに「@」が含まれていないと登録できない' do
+        @user.email = 'samplesample.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email には「@」を含めてください")
+        expect(@user.errors.full_messages).to include('Email には「@」を含めてください')
       end
 
       it '重複したemailは登録できない' do
@@ -66,8 +66,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'passwordが全角文字では登録できない' do
-        @user.password = "サンプルパスワード"
-        @user.password_confirmation = "サンプルパスワード"
+        @user.password = 'サンプルパスワード'
+        @user.password_confirmation = 'サンプルパスワード'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください!')
       end
