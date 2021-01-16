@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :price, null: false
       t.references :user, null: false, foreign_key: true
       t.integer :category_id, null: false
+      t.integer :condition_id, null: false
       t.timestamps
     end
   end
