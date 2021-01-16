@@ -32,5 +32,5 @@ class Item < ApplicationRecord
 
   validates :name, length: {maximum: 40}
   validates :description, length: {maximum: 1000}
-  validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000 }
 end
