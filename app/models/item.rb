@@ -24,7 +24,7 @@ class Item < ApplicationRecord
     validates :days_taken_id
   end
 
-  validates :name, length: {maximum: 40}
-  validates :description, length: {maximum: 1000}
-  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000 }
+  validates :name, length: { maximum: 40 }
+  validates :description, length: { maximum: 1000 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 end
