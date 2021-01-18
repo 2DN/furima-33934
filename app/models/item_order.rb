@@ -1,13 +1,14 @@
 class ItemOrder
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :area, :address, :building, :phone, :item_id, :user_id, :order_id
+  attr_accessor :postal_code, :prefecture_id, :area, :address, :building, :phone, :item_id, :user_id, :order_id, :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)" }
     validates :area
     validates :address
     validates :phone, format: { with: /\A[0-9]{1,11}\z/, message: "gotta be within 11 numbers"}
+    validates :token
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
