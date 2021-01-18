@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index, only: [:index, :create]
+  before_action :move_to_index
   before_action :already_sold_out
 
   def index
