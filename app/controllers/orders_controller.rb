@@ -44,9 +44,7 @@ class OrdersController < ApplicationController
 
   def already_sold_out
     @item = Item.find(params[:item_id])
-    if @item.order != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.order != nil
   end
 
 end
