@@ -53,7 +53,7 @@ RSpec.describe ItemOrder, type: :model do
       end
 
       it 'phoneが12桁以上の場合' do
-        @item_order.phone = '123456789101112'
+        @item_order.phone = '123456789123'
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
       end
