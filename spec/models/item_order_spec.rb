@@ -58,8 +58,14 @@ RSpec.describe ItemOrder, type: :model do
         expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
       end
 
-      it 'phoneが数字以外の場合' do
+      it 'phoneが全角文字の場合' do
         @item_order.phone = 'アイウエオ'
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
+      end
+
+      it 'phoneが英数混在の場合' do
+        @item_order.phone = '123abc456'
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
       end
