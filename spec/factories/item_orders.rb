@@ -7,5 +7,7 @@ FactoryBot.define do
     building { '東北大学' }
     phone { '08012345678' }
     token { 'tok_abcdefghijk00000000000000000' }
+    user_id {3}
+    item_id {4}
   end
 end
