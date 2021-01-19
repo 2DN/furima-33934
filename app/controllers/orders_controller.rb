@@ -1,15 +1,16 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_item, except: [:order_params, :pay_item]
   before_action :move_to_index
   before_action :already_sold_out
 
   def index
-    @item = Item.find(params[:item_id])
+    
     @item_order = ItemOrder.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    
     @item_order = ItemOrder.new(order_params)
     if @item_order.valid?
       pay_item
@@ -37,13 +38,18 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_index
+  def find_item
     @item = Item.find(params[:item_id])
+  end
+
+
+  def move_to_index
+    
     redirect_to root_path if @item.user == current_user
   end
 
   def already_sold_out
-    @item = Item.find(params[:item_id])
+    
     redirect_to root_path unless @item.order.nil?
   end
 end
