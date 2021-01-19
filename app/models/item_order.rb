@@ -8,6 +8,8 @@ class ItemOrder
     validates :address
     validates :phone, format: { with: /\A[0-9]{1,11}\z/, message: 'gotta be within 11 numbers' }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
