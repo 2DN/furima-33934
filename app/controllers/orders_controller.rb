@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_item, except: [:order_params, :pay_item]
   before_action :move_to_index
-  before_action :already_sold_out
+  
 
   def index
     
@@ -45,11 +45,9 @@ class OrdersController < ApplicationController
 
   def move_to_index
     
-    redirect_to root_path if @item.user == current_user
+    redirect_to root_path if @item.user == current_user || @item.order != nil
   end
 
-  def already_sold_out
-    
-    redirect_to root_path unless @item.order.nil?
-  end
+
+  
 end
