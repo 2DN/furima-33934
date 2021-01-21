@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
 
   has_one :order
 
@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :image
+    validates :images
     validates :description
     validates :price
   end

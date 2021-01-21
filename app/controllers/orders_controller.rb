@@ -2,15 +2,12 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_item, except: [:order_params, :pay_item]
   before_action :move_to_index
-  
 
   def index
-    
     @item_order = ItemOrder.new
   end
 
   def create
-    
     @item_order = ItemOrder.new(order_params)
     if @item_order.valid?
       pay_item
@@ -42,12 +39,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-
   def move_to_index
-    
-    redirect_to root_path if @item.user == current_user || @item.order != nil
+    redirect_to root_path if @item.user == current_user || !@item.order.nil?
   end
-
-
-  
 end
