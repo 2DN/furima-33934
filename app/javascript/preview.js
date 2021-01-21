@@ -14,6 +14,7 @@ if (document.URL.match(/new/) || document.URL.match(/edit/)){
       const blobImage = document.createElement('img');
 
       blobImage.setAttribute('src', blob);
+      blobImage.setAttribute('class', 'image-size')
       
       imageElement.appendChild(blobImage);
       ImageList.appendChild(imageElement);
