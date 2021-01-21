@@ -10,6 +10,12 @@ RSpec.describe Item, type: :model do
       it '全ての必須項目が入力されており、各々の入力条件が全て満たされていると出品できる' do
         expect(@item).to be_valid
       end
+
+      it 'itemsが複数枚ある場合' do
+        @item.images[0] = "public/images/test_image.png"
+        @item.images[1] = "public/images/star.png"
+        expect(@item).to be_valid
+      end
     end
 
     context '商品が出品できない場合' do
@@ -25,10 +31,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
 
-      it 'imageが空の場合' do
-        @item.image = nil
+      it 'imagesが空の場合' do
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank")
       end
 
       it 'descriptionが空の場合' do
