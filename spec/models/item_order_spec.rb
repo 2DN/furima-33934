@@ -25,13 +25,13 @@ RSpec.describe ItemOrder, type: :model do
       it 'postal_codeにハイフンが含まれていない場合' do
         @item_order.postal_code = '1234567'
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@item_order.errors.full_messages).to include("Postal code はハイフンを含めてください")
       end
 
       it 'prefecture_idが1の場合' do
         @item_order.prefecture_id = 1
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item_order.errors.full_messages).to include("Prefecture を入力してください")
       end
 
       it 'areaが空の場合' do
@@ -55,19 +55,19 @@ RSpec.describe ItemOrder, type: :model do
       it 'phoneが12桁以上の場合' do
         @item_order.phone = '123456789123'
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
+        expect(@item_order.errors.full_messages).to include("Phone は11桁以内の数字を入力してください")
       end
 
       it 'phoneが全角文字の場合' do
         @item_order.phone = 'アイウエオ'
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
+        expect(@item_order.errors.full_messages).to include('Phone は11桁以内の数字を入力してください')
       end
 
       it 'phoneが英数混在の場合' do
         @item_order.phone = '123abc456'
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include('Phone gotta be within 11 numbers')
+        expect(@item_order.errors.full_messages).to include('Phone は11桁以内の数字を入力してください')
       end
 
       it 'tokenが空の場合' do

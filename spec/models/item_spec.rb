@@ -52,31 +52,31 @@ RSpec.describe Item, type: :model do
       it 'category_idが1の場合' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
+        expect(@item.errors.full_messages).to include('Category を入力してください')
       end
 
       it 'condition_idが1の場合' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+        expect(@item.errors.full_messages).to include('Condition を入力してください')
       end
 
       it 'delivery_fee_idが1の場合' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
+        expect(@item.errors.full_messages).to include('Delivery fee を入力してください')
       end
 
       it 'prefecture_idが1の場合' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+        expect(@item.errors.full_messages).to include('Prefecture を入力してください')
       end
 
       it 'days_taken_idが1の場合' do
         @item.days_taken_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Days taken must be other than 1')
+        expect(@item.errors.full_messages).to include('Days taken を入力してください')
       end
 
       it 'priceが空の場合' do
